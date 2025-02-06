@@ -4,27 +4,28 @@
 
 :root {
   /* color */
-  --white: #fff;
+  --white: #fbfbfb;
   --background-color: #fbfbfb;
   --background-color-second: rgba(84, 190, 150, 0.2);
   --element-color: #54be96;
   --element-color-hover: #36a379;
   --text-color: #191a15;
 
-  /* border */
-  --border-button: 30px;
+  /* border radius */
+  --button-radius: 30px;
   --input-radius: 12px;
 }
 
 body {
   font-family: 'Inter', serif;
-  font-size: clamp(14px, 1.5vw, 20px);
+  font-size: clamp(14px, 1.5vw, 16px);
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
   line-height: 1.5;
   padding: clamp(16px, 5vw, 24px) clamp(24px, 10vw, 128px);
   background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 h1,
@@ -58,4 +59,8 @@ a {
   text-decoration: none;
   cursor: pointer;
   color: inherit;
+}
+
+button {
+  cursor: pointer;
 }

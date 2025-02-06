@@ -1,8 +1,20 @@
 .header-container {
   display: flex;
   align-items: center;
-  padding-bottom: 34px;
-  border-bottom: 1px solid rgba(25, 26, 21, 0.1);
+  justify-content: space-between;
+  padding-bottom: 24px;
+  position: relative;
+}
+
+.header-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  right: 100%;
+  width: 300%;
+  height: 1px;
+  background-color: rgba(25, 26, 21, 0.1);
 }
 
 .header-container > nav > ul {

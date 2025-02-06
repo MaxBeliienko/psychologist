@@ -2,11 +2,29 @@ import styles from './UserPanel.module.css';
 import { useState } from 'react';
 import NotLoginUserPanel from './notLoginUserPanel/NotLoginUserPanel';
 import LoginUserPanel from './loginUserPanel/LoginUserPanel';
+import { UserBasicInfo } from '../../types';
 
-const UserPanel = () => {
-  const [login, setLogin] = useState<boolean>(false);
+interface OpenModalFunction {
+  (type: 'login' | 'register'): void;
+}
 
-  return <div>{login ? <LoginUserPanel /> : <NotLoginUserPanel />}</div>;
+interface UserPanelProps {
+  isOpen: OpenModalFunction;
+  user: UserBasicInfo | null;
+}
+
+const UserPanel: React.FC<UserPanelProps> = ({ isOpen, user }) => {
+  console.log(user);
+
+  return (
+    <div>
+      {user ? (
+        <LoginUserPanel user={user} />
+      ) : (
+        <NotLoginUserPanel isOpen={isOpen} />
+      )}
+    </div>
+  );
 };
 
 export default UserPanel;

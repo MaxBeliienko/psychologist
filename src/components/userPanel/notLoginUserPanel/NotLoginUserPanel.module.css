@@ -1,0 +1,34 @@
+.not-login-user-panel-wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  border-radius: var(--button-radius);
+  padding: 14px 35px;
+  width: 124px;
+  height: 48px;
+  font-size: clamp(14px, 1.4vw, 16px);
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.register {
+  width: 171px;
+  height: 48px;
+  background-color: var(--element-color);
+  color: var(--white);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--background-color-second);
+}
+
+.register:hover {
+  background-color: var(--element-color-hover);
+}
