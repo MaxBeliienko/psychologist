@@ -1,0 +1,11 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  padding-bottom: 34px;
+  border-bottom: 1px solid rgba(25, 26, 21, 0.1);
+}
+
+.header-container > nav > ul {
+  display: flex;
+  gap: clamp(10px, 5vw, 40px);
+}

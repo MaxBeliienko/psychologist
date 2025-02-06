@@ -1,0 +1,11 @@
+.logo-text {
+  font-weight: 700;
+  font-size: clamp(14px, 1.5vw, 20px);
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #191a15;
+}
+
+.logo-text > span {
+  color: #54be96;
+}
