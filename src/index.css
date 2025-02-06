@@ -26,6 +26,8 @@ body {
   padding: clamp(16px, 5vw, 24px) clamp(24px, 10vw, 128px);
   background-color: var(--background-color);
   color: var(--text-color);
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 h1,
