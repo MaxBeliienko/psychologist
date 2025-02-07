@@ -14,8 +14,6 @@ interface UserPanelProps {
 }
 
 const UserPanel: React.FC<UserPanelProps> = ({ isOpen, user }) => {
-  console.log(user);
-
   return (
     <div>
       {user ? (

@@ -9,6 +9,7 @@ interface FirebaseConfig {
   storageBucket: string;
   messagingSenderId: string;
   appId: string;
+  databaseURL: string;
 }
 
 const firebaseConfig: FirebaseConfig = {
@@ -18,10 +19,12 @@ const firebaseConfig: FirebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  databaseURL:
+    'https://psychologist-5ec3c-default-rtdb.europe-west1.firebasedatabase.app',
 };
 
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-export const database = getDatabase();
+export const database = getDatabase(app);
 export default app;

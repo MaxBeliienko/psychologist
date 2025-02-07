@@ -1,9 +1,36 @@
 import styles from './PsychologistList.module.css';
-import { ref, get } from 'firebase/database';
-import { database } from '../../firebaseConfig';
+import { Psychologist } from '../../types';
+import PsychologistCard from './psychologistCard/PsychologistCard';
 
-const PsychologistList: React.FC = () => {
-  return <div>List</div>;
+interface PsychologistListProps {
+  psychologists: Psychologist[] | null;
+}
+
+const PsychologistList: React.FC<PsychologistListProps> = ({
+  psychologists,
+}) => {
+  console.log(psychologists);
+
+  return (
+    <div className={styles['list-container']}>
+      {psychologists ? (
+        <>
+          <div>Filter</div>
+          <ul className={styles['list-wrapper']}>
+            {Object.entries(psychologists).map(([id, psychologist]) => {
+              return (
+                <li key={id}>
+                  <PsychologistCard psychologist={psychologist} />
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      ) : (
+        'Currently, there are no psychologists in the base!'
+      )}
+    </div>
+  );
 };
 
 export default PsychologistList;

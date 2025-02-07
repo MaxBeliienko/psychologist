@@ -2,16 +2,20 @@ import PsychologistList from '../components/psychologistList/PsychologistList';
 import { ref, get } from 'firebase/database';
 import { database } from '../firebaseConfig';
 import { useState, useEffect } from 'react';
+import { Psychologist } from '../types';
 
 const PsychologistsPage: React.FC = () => {
-  const [psychologists, setPsychologists] = useState(null);
+  const [psychologists, setPsychologists] = useState<Psychologist[] | null>(
+    null
+  );
   const getPsychologist = async () => {
-    const psychologistsRef = ref(database, 'psychologist');
+    const psychologistsRef = ref(database, 'psychologists');
     try {
       const snapshot = await get(psychologistsRef);
       if (snapshot.exists()) {
         return snapshot.val();
       } else {
+        console.log('No psychologists found');
         return null;
       }
     } catch (error) {
@@ -23,8 +27,6 @@ const PsychologistsPage: React.FC = () => {
   useEffect(() => {
     getPsychologist().then(data => {
       if (data) {
-        console.log(data);
-
         setPsychologists(data);
       }
     });
@@ -32,7 +34,7 @@ const PsychologistsPage: React.FC = () => {
 
   return (
     <div>
-      <PsychologistList />
+      <PsychologistList psychologists={psychologists} />
     </div>
   );
 };
