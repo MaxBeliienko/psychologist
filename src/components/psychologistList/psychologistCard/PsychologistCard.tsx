@@ -3,6 +3,7 @@ import { Psychologist } from '../../../types';
 import { FaStar } from 'react-icons/fa';
 import { CiHeart } from 'react-icons/ci';
 import { useState } from 'react';
+import ReviewCard from '../reviewCard/ReviewCard';
 
 interface PsychologistCardProps {
   psychologist: Psychologist;
@@ -23,7 +24,12 @@ const PsychologistCard: React.FC<PsychologistCardProps> = ({
     reviews,
     specialization,
   } = psychologist;
+
   const [show, setShow] = useState<boolean>(false);
+
+  const handleShowMoreClick: () => void = () => {
+    setShow(!show);
+  };
   return (
     <div className={styles['card-container']}>
       <div className={styles['card-img-block-wrapper']}>
@@ -66,9 +72,41 @@ const PsychologistCard: React.FC<PsychologistCardProps> = ({
               {initial_consultation}
             </p>
           </div>
-          <p>{about}</p>
+          <p className={styles.about}>{about}</p>
         </div>
-        <div>{show ? <button>Read more</button> : <div>No</div>}</div>
+        <div>
+          {!show ? (
+            <button
+              className={styles['read-more-button']}
+              onClick={handleShowMoreClick}
+            >
+              Read more
+            </button>
+          ) : (
+            <div>
+              <ul>
+                {reviews.map((review, index) => {
+                  return (
+                    <li key={index}>
+                      <ReviewCard review={review} />
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className={styles['btn-cont']}>
+                <button className={styles['appointment-button']}>
+                  Make an appointment
+                </button>
+                <button
+                  className={styles['read-more-button']}
+                  onClick={handleShowMoreClick}
+                >
+                  Hide
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

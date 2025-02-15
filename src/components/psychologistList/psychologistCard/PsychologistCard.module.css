@@ -5,7 +5,6 @@
   background-color: #f3f3f3;
   border-radius: 24px;
   width: 100%;
-  max-height: 358px;
 }
 
 .subtitle {
@@ -100,4 +99,28 @@
   font-weight: 400;
   line-height: 125%;
   color: rgba(25, 26, 21, 0.5);
+}
+
+.read-more-button {
+  border: none;
+  text-decoration: underline;
+}
+
+.appointment-button {
+  border-radius: var(--button-radius);
+  padding: 18px 50px;
+  background-color: var(--element-color);
+  color: var(--white);
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.appointment-button:hover {
+  background-color: var(--element-color-hover);
+}
+
+.btn-cont {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
 }
