@@ -4,6 +4,8 @@ import { FaStar } from 'react-icons/fa';
 import { CiHeart } from 'react-icons/ci';
 import { useState } from 'react';
 import ReviewCard from '../reviewCard/ReviewCard';
+import Modal from '../../modal/Modal';
+import AppointmentModal from '../../appointmentModal/AppointmentModal';
 
 interface PsychologistCardProps {
   psychologist: Psychologist;
@@ -26,6 +28,18 @@ const PsychologistCard: React.FC<PsychologistCardProps> = ({
   } = psychologist;
 
   const [show, setShow] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<'appointment' | null>(null);
+
+  const openModal: (type: 'appointment') => void = type => {
+    setModalContent(type);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalContent(null);
+  };
 
   const handleShowMoreClick: () => void = () => {
     setShow(!show);
@@ -84,7 +98,7 @@ const PsychologistCard: React.FC<PsychologistCardProps> = ({
             </button>
           ) : (
             <div>
-              <ul>
+              <ul className={styles['review-list']}>
                 {reviews.map((review, index) => {
                   return (
                     <li key={index}>
@@ -94,7 +108,10 @@ const PsychologistCard: React.FC<PsychologistCardProps> = ({
                 })}
               </ul>
               <div className={styles['btn-cont']}>
-                <button className={styles['appointment-button']}>
+                <button
+                  className={styles['appointment-button']}
+                  onClick={() => openModal('appointment')}
+                >
                   Make an appointment
                 </button>
                 <button
@@ -108,6 +125,15 @@ const PsychologistCard: React.FC<PsychologistCardProps> = ({
           )}
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        {modalContent === 'appointment' && (
+          <AppointmentModal
+            psychologistName={name}
+            psychologistAvatar={avatar_url}
+            onClose={closeModal}
+          />
+        )}
+      </Modal>
     </div>
   );
 };

@@ -124,3 +124,10 @@
   align-items: end;
   justify-content: space-between;
 }
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 40px;
+}

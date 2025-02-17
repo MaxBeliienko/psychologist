@@ -9,8 +9,6 @@ interface PsychologistListProps {
 const PsychologistList: React.FC<PsychologistListProps> = ({
   psychologists,
 }) => {
-  console.log(psychologists);
-
   return (
     <div className={styles['list-container']}>
       {psychologists ? (

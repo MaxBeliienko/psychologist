@@ -18,11 +18,16 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
 
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
     } else {
       document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'auto';
     }
 
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'auto';
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
