@@ -13,7 +13,6 @@ const PsychologistList: React.FC<PsychologistListProps> = ({
     <div className={styles['list-container']}>
       {psychologists ? (
         <>
-          <div>Filter</div>
           <ul className={styles['list-wrapper']}>
             {Object.entries(psychologists).map(([id, psychologist]) => {
               return (
