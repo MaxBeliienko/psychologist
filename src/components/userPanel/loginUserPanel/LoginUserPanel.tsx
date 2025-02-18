@@ -3,6 +3,7 @@ import { FaUser } from 'react-icons/fa';
 import { auth } from '../../../firebaseConfig';
 import { signOut } from 'firebase/auth';
 import { UserBasicInfo } from '../../../types';
+import { toast } from 'react-toastify';
 
 interface LoginUserPanelProps {
   user: UserBasicInfo | null;
@@ -12,9 +13,10 @@ const LoginUserPanel: React.FC<LoginUserPanelProps> = ({ user }) => {
   const logout = async () => {
     try {
       await signOut(auth);
-      console.log('User logged out');
+      toast.success('User logout');
     } catch (error: any) {
       console.log('Logout error', error.message);
+      toast.error(error.message);
     }
   };
   return (

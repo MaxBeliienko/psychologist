@@ -5,6 +5,8 @@ import Header from './components/header/Header';
 import { auth } from './firebaseConfig';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { UserBasicInfo } from './types';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const PsychologistPage = lazy(() => import('./pages/PsychologistsPage'));
@@ -38,6 +40,18 @@ function App() {
           element={user ? <FavoritesPage /> : <Navigate to="/" />}
         />
       </Routes>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </Suspense>
   );
 }

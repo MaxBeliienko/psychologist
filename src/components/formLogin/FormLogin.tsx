@@ -5,6 +5,7 @@ import { auth } from '../../firebaseConfig';
 import { FaRegEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa6';
 import styles from './FormLogin.module.css';
+import { toast } from 'react-toastify';
 
 interface FormLoginProps {
   onClose: () => void;
@@ -33,10 +34,11 @@ const FormLogin: React.FC<FormLoginProps> = ({ onClose }) => {
         data.email,
         data.password
       );
+      toast.success('Logged in is success!');
       onClose();
-      console.log('User logged in', userCredential.user);
     } catch (err: any) {
       setError(err.message);
+      toast.error(err.message);
     }
   };
 

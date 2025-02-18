@@ -1,5 +1,6 @@
 import styles from './AppointmentModal.module.css';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 interface AppointmentModalProps {
   psychologistName: string;
@@ -24,9 +25,11 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormAppointmentData>();
   const onSubmit = (data: FormAppointmentData) => {
-    console.log('Ok');
+    toast.success('Success!');
+    console.log(data);
+
     onClose();
   };
 

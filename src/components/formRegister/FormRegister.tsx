@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 import styles from './FormRegister.module.css';
+import { toast } from 'react-toastify';
 
 interface FormRegisterProps {
   onClose: () => void;
@@ -38,9 +39,11 @@ const FormRegister: React.FC<FormRegisterProps> = ({ onClose }) => {
       await updateProfile(userCredential.user, {
         displayName: data.name,
       });
+      toast.success('Registartion success!');
       onClose();
     } catch (err: any) {
       setError(err.message);
+      toast.error(err.message);
     }
   };
   return (
