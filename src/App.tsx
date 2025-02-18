@@ -7,6 +7,7 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 import { UserBasicInfo } from './types';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserContext } from './context/UserContext';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const PsychologistPage = lazy(() => import('./pages/PsychologistsPage'));
@@ -30,29 +31,31 @@ function App() {
     : null;
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Header user={userBasicInfo} />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/psychologist" element={<PsychologistPage />} />
-        <Route
-          path="/favorites"
-          element={user ? <FavoritesPage /> : <Navigate to="/" />}
+    <UserContext.Provider value={{ user: userBasicInfo }}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Header user={userBasicInfo} />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/psychologist" element={<PsychologistPage />} />
+          <Route
+            path="/favorites"
+            element={user ? <FavoritesPage /> : <Navigate to="/" />}
+          />
+        </Routes>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
         />
-      </Routes>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
-    </Suspense>
+      </Suspense>
+    </UserContext.Provider>
   );
 }
 

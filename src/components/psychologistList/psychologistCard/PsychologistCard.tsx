@@ -1,8 +1,11 @@
 import styles from './PsychologistCard.module.css';
 import { Psychologist } from '../../../types';
 import { FaStar } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
 import { CiHeart } from 'react-icons/ci';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useUser } from '../../../context/UserContext';
+import { toast } from 'react-toastify';
 import ReviewCard from '../reviewCard/ReviewCard';
 import Modal from '../../modal/Modal';
 import AppointmentModal from '../../appointmentModal/AppointmentModal';
@@ -25,11 +28,25 @@ const PsychologistCard: React.FC<PsychologistCardProps> = ({
     rating,
     reviews,
     specialization,
+    id,
   } = psychologist;
+  const { user } = useUser();
 
-  const [show, setShow] = useState<boolean>(false);
+  const [showReadMore, setShowReadMore] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [modalContent, setModalContent] = useState<'appointment' | null>(null);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+    const storedFavorites = localStorage.getItem('favorites');
+    if (storedFavorites) {
+      const favorites = JSON.parse(storedFavorites) as string[];
+      setIsFavorite(favorites.includes(id));
+    }
+  }, [id, user]);
 
   const openModal: (type: 'appointment') => void = type => {
     setModalContent(type);
@@ -42,8 +59,24 @@ const PsychologistCard: React.FC<PsychologistCardProps> = ({
   };
 
   const handleShowMoreClick: () => void = () => {
-    setShow(!show);
+    setShowReadMore(!showReadMore);
   };
+
+  const handleFavoriteClick: () => void = () => {
+    if (!user) {
+      toast.warning('Please log in to add to favorites!');
+      return;
+    }
+    const favorites = JSON.parse(
+      localStorage.getItem('favorites') || '[]'
+    ) as string[];
+    const updatedFavorites = isFavorite
+      ? favorites.filter(favoriteId => favoriteId !== id)
+      : [...favorites, id];
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    setIsFavorite(!isFavorite);
+  };
+
   return (
     <div className={styles['card-container']}>
       <div className={styles['card-img-block-wrapper']}>
@@ -64,7 +97,16 @@ const PsychologistCard: React.FC<PsychologistCardProps> = ({
               Price / hour:{' '}
               <span className={styles.price}>{price_per_hour}$</span>{' '}
             </p>
-            <CiHeart className={styles.heart} />
+            <button
+              className={styles['heart-button']}
+              onClick={handleFavoriteClick}
+            >
+              {isFavorite ? (
+                <FaHeart className={styles.heart} />
+              ) : (
+                <CiHeart className={styles.heart} />
+              )}
+            </button>
           </div>
         </div>
         <div className={styles['basic-info-container']}>
@@ -89,7 +131,7 @@ const PsychologistCard: React.FC<PsychologistCardProps> = ({
           <p className={styles.about}>{about}</p>
         </div>
         <div>
-          {!show ? (
+          {!showReadMore ? (
             <button
               className={styles['read-more-button']}
               onClick={handleShowMoreClick}

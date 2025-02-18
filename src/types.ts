@@ -18,4 +18,5 @@ export interface Psychologist {
   specialization: string;
   initial_consultation: string;
   about: string;
+  id: string;
 }

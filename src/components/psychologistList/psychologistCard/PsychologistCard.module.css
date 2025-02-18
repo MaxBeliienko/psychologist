@@ -64,9 +64,16 @@
   height: 18px;
 }
 
+.heart-button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
 .heart {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
+  fill: red;
 }
 
 .price {
