@@ -1,5 +1,3 @@
-import styles from './UserPanel.module.css';
-import { useState } from 'react';
 import NotLoginUserPanel from './notLoginUserPanel/NotLoginUserPanel';
 import LoginUserPanel from './loginUserPanel/LoginUserPanel';
 import { UserBasicInfo } from '../../types';

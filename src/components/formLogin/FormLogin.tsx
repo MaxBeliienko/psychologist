@@ -29,11 +29,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onClose }) => {
   const onSubmit = async (data: LoginFormData) => {
     setError(null);
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
+      await signInWithEmailAndPassword(auth, data.email, data.password);
       toast.success('Logged in is success!');
       onClose();
     } catch (err: any) {
