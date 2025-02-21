@@ -1,50 +1,68 @@
-# React + TypeScript + Vite
+Psychologist Booking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔗 A web application for finding and booking psychologists.
 
-Currently, two official plugins are available:
+🚀 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This application allows users to: ✅ View a list of psychologists✅ Filter and
+sort by price, popularity, and alphabetically✅ Add psychologists to their
+favorites list✅ Authenticate via Firebase✅ Use a responsive design for a
+seamless experience on all devices
 
-## Expanding the ESLint configuration
+🛠️ Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+React + TypeScript – main stack
 
-- Configure the top-level `parserOptions` property like this:
+React Router – routing
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Firebase – authentication and database
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+React Hook Form – form management
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Vercel – hosting and deployment
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+📦 Installation & Setup
+
+1. Clone the Repository
+
+git clone https://github.com/MaxBeliienko/psychologist.git cd psychologist
+
+2. Install Dependencies
+
+npm install
+
+3. Set Up Environment Variables
+
+Create a .env file in the root directory and add the following variables:
+
+VITE_FIREBASE_API_KEY=your_api_key VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+
+4. Run the Development Server
+
+npm run dev
+
+The app will be available at: http://localhost:5173
+
+🚀 Deployment on Vercel
+
+Push your code to GitHub
+
+Connect the repository to Vercel
+
+Add environment variables in Settings > Environment Variables
+
+Click "Deploy"
+
+👥 Authors
+
+Maksym Beliienko – Developer
+
+📜 License
+
+This project is licensed under the MIT License – feel free to use it! 🎉
+
+📌 If you like this project, don't forget to star ⭐ it on GitHub!
