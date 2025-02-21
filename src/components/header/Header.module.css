@@ -19,5 +19,36 @@
 
 .header-container > nav > ul {
   display: flex;
-  gap: clamp(10px, 5vw, 40px);
+  gap: 40px;
+}
+
+.nav-nav-link {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .header-container {
+    padding-bottom: 18px;
+  }
+
+  .header-container > nav > ul {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo {
+    display: none;
+  }
+
+  .nav-span {
+    display: none;
+  }
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+  }
 }

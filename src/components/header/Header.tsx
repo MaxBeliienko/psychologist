@@ -7,6 +7,8 @@ import Modal from '../modal/Modal';
 import FormRegister from '../formRegister/FormRegister';
 import FormLogin from '../formLogin/FormLogin';
 import { UserBasicInfo } from '../../types';
+import { IoHome, IoPeople } from 'react-icons/io5';
+import { RiSpeakAiFill } from 'react-icons/ri';
 
 interface OpenModalFunction {
   (type: 'login' | 'register'): void;
@@ -33,18 +35,29 @@ const Header: React.FC<HeadreProps> = ({ user }) => {
   };
   return (
     <div className={styles['header-container']}>
-      <Logo />
+      <div className={styles.logo}>
+        <Logo />
+      </div>
       <nav>
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/" className={styles['nav-nav-link']}>
+              <IoHome className={styles['nav-icon']} />
+              <span className={styles['nav-span']}>Home</span>
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/psychologist">Psychologist</NavLink>
+            <NavLink to="/psychologist" className={styles['nav-nav-link']}>
+              <IoPeople className={styles['nav-icon']} />
+              <span className={styles['nav-span']}>Psychologist</span>
+            </NavLink>
           </li>
           {user && (
             <li>
-              <NavLink to="/favorites">Favorites</NavLink>
+              <NavLink to="/favorites" className={styles['nav-nav-link']}>
+                <RiSpeakAiFill className={styles['nav-icon']} />
+                <span className={styles['nav-span']}>Favorites</span>
+              </NavLink>
             </li>
           )}
         </ul>

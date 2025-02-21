@@ -45,3 +45,28 @@
 .logout-button:hover {
   background-color: var(--background-color-second);
 }
+
+@media (max-width: 1023px) {
+  .login-user-panel-wrapper {
+    gap: 15px;
+  }
+
+  .info-button {
+    gap: 5px;
+  }
+
+  .info-button > span {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logout-button {
+    width: 90px;
+    font-size: 14px;
+    padding: 0;
+    height: 38px;
+  }
+}
+
+@media (max-width: 767px) {
+}
