@@ -138,3 +138,13 @@
   gap: 25px;
   margin-bottom: 40px;
 }
+
+@media (max-width: 767px) {
+  .card-img-block-wrapper {
+    display: none;
+  }
+
+  .appointment-button {
+    padding: 10px 20px;
+  }
+}

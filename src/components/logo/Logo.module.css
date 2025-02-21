@@ -3,7 +3,7 @@
   font-size: 20px;
   line-height: 120%;
   letter-spacing: -0.02em;
-  color: #191a15;
+  color: var(--text-color);
 }
 
 .logo-text > span {

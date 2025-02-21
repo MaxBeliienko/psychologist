@@ -9,6 +9,7 @@ import FormLogin from '../formLogin/FormLogin';
 import { UserBasicInfo } from '../../types';
 import { IoHome, IoPeople } from 'react-icons/io5';
 import { RiSpeakAiFill } from 'react-icons/ri';
+import ThemeSwitcher from '../themeSwitcher/ThemeSwitcher';
 
 interface OpenModalFunction {
   (type: 'login' | 'register'): void;
@@ -67,6 +68,9 @@ const Header: React.FC<HeadreProps> = ({ user }) => {
         {modalContent === 'register' && <FormRegister onClose={closeModal} />}
         {modalContent === 'login' && <FormLogin onClose={closeModal} />}
       </Modal>
+      <div className={styles['theme-wrapper']}>
+        <ThemeSwitcher />
+      </div>
     </div>
   );
 };

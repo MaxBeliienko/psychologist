@@ -11,6 +11,7 @@
   border: none;
   align-items: center;
   justify-content: center;
+  color: var(--text-color);
 }
 
 .info-button > span {
@@ -33,7 +34,8 @@
 }
 
 .logout-button {
-  border: 1px solid rgba(25, 26, 21, 0.2);
+  border: 1px solid var(--element-color);
+  color: var(--text-color);
   border-radius: var(--button-radius);
   padding: 14px 36px;
   width: 135px;

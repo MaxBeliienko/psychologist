@@ -28,9 +28,20 @@
   align-items: center;
 }
 
+.nav-icon {
+  fill: var(--element-color);
+}
+
+.theme-wrapper {
+  position: absolute;
+  bottom: -60px;
+  right: 0;
+}
+
 @media (max-width: 1023px) {
   .header-container {
     padding-bottom: 18px;
+    margin-bottom: 50px;
   }
 
   .header-container > nav > ul {
@@ -39,6 +50,10 @@
 }
 
 @media (max-width: 767px) {
+  .header-container {
+    margin-bottom: 30px;
+  }
+
   .logo {
     display: none;
   }

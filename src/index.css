@@ -16,6 +16,14 @@
   --input-radius: 12px;
 }
 
+[data-theme='dark'] {
+  --background-color: #232143;
+  --background-color-second: #928e8b;
+  --element-color: #ed6606;
+  --element-color-hover: #ff6a00;
+  --text-color: #c0aaae;
+}
+
 body {
   font-family: 'Inter', serif;
   font-size: clamp(14px, 1.5vw, 16px);
